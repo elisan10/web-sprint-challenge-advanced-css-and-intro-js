@@ -249,16 +249,16 @@ function get20s(array){
   const twentyCentury = []; 
   for(let i = 0; i < artists.length; i++){ 
     if(artists[i]["years"]){
-      artists[i]["years"] = parseInt("years", 10)
+      artists[i]["years"] = parseInt(artists[i]["years"])
     }
-    console.log(artists)
+    
   }
   for(let i = 0; i < artists.length; i++){ 
-    if(artists[i]["years"].includes("1904 - 1989") && artists[i]["years"].includes("1907 - 1954")){
+    if(artists[i]["years"] > 1900){
       twentyCentury.push(artists[i]["name"]); 
     }
   }
-  console.log(twentyCentury)
+  return twentyCentury
 }
 
 
