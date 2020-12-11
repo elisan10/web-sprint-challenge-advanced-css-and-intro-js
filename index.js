@@ -186,7 +186,7 @@ export const artists = [
       "genre": "Mannerism",
       "nationality": "Spanish,Greek",
       "bio": "Doménikos Theotokópoulos (Greek: Δομήνικος Θεοτοκόπουλος [ðoˈminikos θeotoˈkopulos]; October 1541 –  7 April 1614), most widely known as El Greco (\"The Greek\"), was a painter, sculptor and architect of the Spanish Renaissance. \"El Greco\" was a nickname, a reference to his Greek origin, and the artist normally signed his paintings with his full birth name in Greek letters, Δομήνικος Θεοτοκόπουλος, Doménikos Theotokópoulos, often adding the word Κρής Krēs, Cretan.",
-      "wikipedia": "http://en.wikipedia.org/wiki/El_Greco",
+      "wikipedia": "http://en.wikipedia.onpnrg/wiki/El_Greco",
       "paintings": 87
     },
     {
@@ -208,16 +208,19 @@ Practice accessing data above by console.log-ing following items:
 (no functions needed) */
 
 //(1) Name of the first artist (0th index) in the array
-
+console.log(artists[0]["name"])
 
 //(2) Bio of the third artist (2nd index) in the array 
 
-
+console.log(artists[2]["bio"])
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 2: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
 (no function needed) 
 There is a typo in your dataset 😱 The 9th artist, Vincent Van Gogh is currently Vincent Van Dough. Use an array method to fix this issue and console.log() to check your work. */
 
+
+artists[8]["name"] = "Vincent Van Gogh"
+console.log(artists[8]["name"])
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 3: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀  
@@ -228,8 +231,8 @@ There is a typo in your dataset 😱 The 9th artist, Vincent Van Gogh is current
  
  Example, if getArtistByIndex is invoked with the artists array and the number 0, it will return `the artist at index 0 is Amedeo Modigliani` */
 
-function getArtistByIndex(/*Your Code Here*/) {
-  /*Your Code Here*/
+function getArtistByIndex(array, index) {
+  return `the artist at index ${array[index]["id"]} is ${array[index]["name"]}`
 }  
 
 
@@ -242,8 +245,20 @@ Use get20s to do the following:
 Example born in 1901 and died in 1959 - included -- born in 1889 and died in 1925 not included
 If correct, the function should return ["Salvador Dali", "Frida Kahlo"]*/
 
-function get20s(/*Your Code Here*/){
-  /*Your Code Here*/
+function get20s(array){
+  const twentyCentury = []; 
+  for(let i = 0; i < artists.length; i++){ 
+    if(artists[i]["years"]){
+      artists[i]["years"] = parseInt("years", 10)
+    }
+    console.log(artists)
+  }
+  for(let i = 0; i < artists.length; i++){ 
+    if(artists[i]["years"].includes("1904 - 1989") && artists[i]["years"].includes("1907 - 1954")){
+      twentyCentury.push(artists[i]["name"]); 
+    }
+  }
+  console.log(twentyCentury)
 }
 
 
@@ -257,8 +272,13 @@ function get20s(/*Your Code Here*/){
  
  For example, if removeArtist is invoked with the artists array and the number 0, it will remove Amedeo Modigliani from our dataset and return the number 19. */
 
-function removeArtist(/*Your Code Here*/){
-   /*Your Code Here*/
+function removeArtist(array, index){
+  for(let i = 0; i < array.length; i++){
+    if(array[i] === array[index]){
+      array.splice(i, 1)
+    }
+  }
+  return array.length
 }
    
 
@@ -278,8 +298,9 @@ Use addArtist to do the following:
 
 Example: addArtist(artists) should return the artists array with the above object added to the end of the array. */
 
-function addArtist(/*Your Code Here*/){
-    /*Your Code Here*/
+function addArtist(array){
+  array.push({"id": 20, "name": "Elizabeth Sanchez", "years": "1994 - 2020", "genre": "Web Design", "nationality": "Mexican-American", "bio": "Elizabeth is trying something new by going through Lambdas program and is very excited to see whats to come."})
+  return array
   }
 
   
@@ -291,10 +312,18 @@ Use lotsOfArt to do the following:
 
 For example lotsOfArt(artists); will return ["Amedeo Modigliani", "Rene Magritte", ... "Albrecht Dürer"]*/
 
-function lotsOfArt(/*Your Code Here*/){
-  /*Your Code Here*/
+function lotsOfArt(array){
+  const hundredPaintings = [] 
+  for(let i = 0; i < artists.length; i++){ 
+    if(artists[i]["name"].includes("Vincent Van Gogh")){
+      artists[i]["name"] = ("Vincent van Dough")
+    }
+    if(artists[i]["paintings"] > 100){
+      hundredPaintings.push(artists[i]["name"]); 
+    }
 }
-
+  return hundredPaintings
+}
 
 
 
